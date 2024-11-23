@@ -5,7 +5,7 @@
 
 /* Secondary Button */
 .btn-secondary {
-  @apply bg-background-background text-cta-primary border border-cta-primary rounded-lg font-sans text-small-14-medium  shadow-md ;
+  @apply bg-background-background px-2 py-1 text-cta-primary rounded-[4px] font-sans text-small-14-medium shadow-md ;
 }
 
 /* Icon Button */

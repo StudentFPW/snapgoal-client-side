@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Modal from '../src/components/Modal';
 import SetNewTask from './components/Modals/SetNewTask';
 import './App.css'
+import CardsList from './components/CardsList';
 
 
 function App() {
@@ -18,7 +19,7 @@ function App() {
       </div>
  
       <button onClick={() => setIsModalOpen(true)}>Открыть модальное окно</button>
-
+      <CardsList/>
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
         <SetNewTask
           onClose={() => setIsModalOpen(false)}
