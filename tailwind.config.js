@@ -22,7 +22,7 @@ export default {
         background: {
           background: '#FAFAFA',
         },
-        CTA: {
+        cta: {
           primary: '#4F46E5',
         },
         feedback: {

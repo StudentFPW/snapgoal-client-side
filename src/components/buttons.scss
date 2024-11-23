@@ -1,0 +1,19 @@
+/* Primary Button */
+.btn-primary {
+  @apply bg-cta-primary text-white px-2 py-2 rounded-lg font-sans text-small-14-medium shadow-md ;
+}
+
+/* Secondary Button */
+.btn-secondary {
+  @apply bg-background-background text-cta-primary border border-cta-primary rounded-lg font-sans text-small-14-medium  shadow-md ;
+}
+
+/* Icon Button */
+.btn-icon {
+  @apply bg-background-background text-cta-primary border border-cta-primary font-sans text-small-14-medium  p-2 rounded-full ;
+}
+
+/* Status Badge (Working now) */
+.badge-status {
+  @apply bg-badges-yellow_bg text-yellow-600 px-2 py-2 rounded text-sm font-sans text-small-14-medium ;
+}

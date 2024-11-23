@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import clock from '../assets/Clock.svg';
 import userIcon from '../assets/Users.svg';
 
@@ -23,5 +24,16 @@ const GoalItem = ({ goal }) => {
     </div>
   );
 };
+
+// GoalItem.propTypes = {
+//   goal: PropTypes.shape({
+//     title: PropTypes.string.isRequired,
+//     description: PropTypes.string,
+//     value: PropTypes.oneOfType([
+//       PropTypes.string,
+//       PropTypes.number,
+//     ]).isRequired,
+//   }).isRequired,
+// };
 
 export default GoalItem;
