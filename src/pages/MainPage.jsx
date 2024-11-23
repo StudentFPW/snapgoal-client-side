@@ -1,12 +1,39 @@
-import { useAuth } from '../core/AuthContext';
+// import { useAuth } from '../core/AuthContext';
+
+import TabBar from "../components/TabBar";
+import Goals from "../components/Goals";
 
 const MainPage = () => {
-  const { logout } = useAuth();
+
+  const user = {
+    role: 'admin', // Или 'admin'
+    coins: 10,
+    name: 'Evan Jons',
+    avatar: null,
+  };
+  
+  const handleRewardsClick = () => {
+    console.log('Navigating to Rewards');
+  };
+
+  const handleSettingsClick = () => {
+    console.log('Navigating to Settings');
+  };
+
+  const handleLogoutClick = () => {
+    console.log('User logged out');
+  };
 
   return (
-    <div>
-      <h1>MainPage</h1>
-      <button onClick={logout}>Logout</button>
+    <div className="flex bg-background-background">
+      <TabBar         
+        user={user}
+        onRewardsClick={handleRewardsClick}
+        onSettingsClick={handleSettingsClick}
+        onLogoutClick={handleLogoutClick}
+        showGoals={true}
+      />
+      <Goals role="admin"/>
     </div>
   );
 };

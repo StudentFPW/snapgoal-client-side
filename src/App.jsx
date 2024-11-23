@@ -3,6 +3,7 @@ import Modal from '../src/components/Modal';
 import FinishTask from './components/Modals/FinishTask';
 import './App.css'
 import Goals from './components/Goals';
+import MainPage from './pages/MainPage';
 
 
 
@@ -32,10 +33,8 @@ function App() {
 
   return (
     <>
-      <div className="w-[355px] h-[80px] font-sans text-basic-16-medium text-content-primary">
-        Click on the Vite and React logos to learn more
-      </div>
-      <Goals role={userRole} />
+      <MainPage/>
+      {/* <Goals role={userRole} />
       <button
         onClick={handleOpenModal}
         className="btn-primary px-4 py-2"
@@ -47,7 +46,7 @@ function App() {
         <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
           <FinishTask onSubmit={handleFinishTask} />
         </Modal>
-      )}
+      )} */}
     </>
   )
 }

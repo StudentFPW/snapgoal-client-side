@@ -24,11 +24,11 @@ const Goals = ({ role }) => {
   const handleGoalSubmit = (newGoal) => {
     console.log('New goal submitted:', newGoal);
     setIsModalOpen(false);
-    // Здесь можно добавить логику для обновления списка целей
+  
   };
 
   return (
-    <div className="p-6 bg-white rounded-lg shadow-lg">
+    <div className="m-2 p-6 bg-white rounded-[16px] shadow-lg">
       {/* Заголовок и кнопка */}
       <div className="flex gap-[24px] items-center mb-6">
         <h1 className="text-2xl font-sans font-bold text-content-primary">Goals</h1>

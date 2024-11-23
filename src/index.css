@@ -26,3 +26,16 @@
 .custom-radio-checked svg {
   display: block;
 }
+
+html,
+body {
+  height: 100vh;
+  margin: 0; 
+  padding: 0;
+}
+
+#root {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
