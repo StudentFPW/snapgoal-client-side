@@ -10,7 +10,7 @@
 
 /* Icon Button */
 .btn-icon {
-  @apply bg-background-background text-cta-primary border border-cta-primary font-sans text-small-14-medium  p-2 rounded-full ;
+  @apply bg-feedback-info_bg text-cta-primary font-sans text-small-14-medium  p-2 rounded-[4px] ;
 }
 
 /* Status Badge (Working now) */

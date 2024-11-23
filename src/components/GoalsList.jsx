@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import GoalItem from './GoalItem';
 import axios from 'axios';
 
@@ -31,6 +31,15 @@ const mockGoals = [
     endDate: '30/09/2024',
     userCount: 8,
   },
+  {
+    id: 4,
+    title: 'Learn JavaScript',
+    description: 'Deep dive into JavaScript fundamentals and ES6+.',
+    progress: 40,
+    startDate: '01/08/2024',
+    endDate: '31/08/2024',
+    userCount: 6,
+  },
 ];
 
 const GoalsList = () => {
@@ -46,7 +55,7 @@ const GoalsList = () => {
         setLoading(false);
       } catch (err) {
         console.error(err);
-        setGoals(mockGoals); // Используем моковые данные в случае ошибки
+        setGoals(mockGoals);
         setError('Ошибка при загрузке целей. Отображаются тестовые данные.');
         setLoading(false);
       }
@@ -59,10 +68,9 @@ const GoalsList = () => {
   if (error) console.warn(error);
 
   return (
-    <div className="p-4 bg-gray-100 min-h-screen">
-      <h1 className="text-2xl font-bold mb-4">List of Goals</h1>
+    <div className="p-4 min-h-screen">
       {goals.length > 0 ? (
-        <div className="space-y-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {goals.map((goal) => (
             <GoalItem key={goal.id} goal={goal} />
           ))}
