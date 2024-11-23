@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import PropTypes from 'prop-types';
-import close from '../../assets/X.svg';
 
 const SetNewGoal = ({ onClose, onSubmit }) => {
   const [title, setTitle] = useState('');

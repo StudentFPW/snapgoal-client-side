@@ -3,3 +3,26 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.custom-radio {
+  width: 16px;
+  height: 16px;
+  border: 2px solid #4F46E5;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.custom-radio-checked {
+  background-color: #4F46E5;
+}
+
+.custom-radio svg {
+  display: none;
+}
+
+.custom-radio-checked svg {
+  display: block;
+}

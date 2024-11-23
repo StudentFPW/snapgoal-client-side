@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Modal from '../src/components/Modal';
-import SetNewGoal from './components/Modals/SetNewGoal';
+import SetNewTask from './components/Modals/SetNewTask';
 import './App.css'
 
 
@@ -20,7 +20,7 @@ function App() {
       <button onClick={() => setIsModalOpen(true)}>Открыть модальное окно</button>
 
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-        <SetNewGoal
+        <SetNewTask
           onClose={() => setIsModalOpen(false)}
           onSubmit={handleAddGoal}
         />
