@@ -9,7 +9,7 @@ const CardContainer = ({ image, title, coins }) => {
         <h3 className="text-basic-16-medium font-sans text-content-primary text-center">{title}</h3>
 
         <div className="flex items-center gap-1 text-content-primary">
-          <img src={coin} alt="coin" className="w-5 h-5" />
+          <img src={coin} alt="coin" className="w-4 h-4" />
           <span className="text-basic-16-medium">{coins}</span>
         </div>
 

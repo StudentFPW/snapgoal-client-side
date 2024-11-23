@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Modal from '../src/components/Modal';
 import SetNewTask from './components/Modals/SetNewTask';
 import './App.css'
-import CardsList from './components/CardsList';
+import InputField from './components/InputField';
 
 
 function App() {
@@ -14,12 +14,12 @@ function App() {
 
   return (
     <>
-      <div className="text-4xl font-bold text-blue-600">
+      <div className="w-[355px] h-[80px] font-sans text-basic-16-medium text-content-primary">
         Click on the Vite and React logos to learn more
       </div>
  
       <button onClick={() => setIsModalOpen(true)}>Открыть модальное окно</button>
-      <CardsList/>
+      <InputField/>
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
         <SetNewTask
           onClose={() => setIsModalOpen(false)}
