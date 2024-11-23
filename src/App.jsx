@@ -1,22 +1,29 @@
 import { useState } from 'react';
 import Modal from '../src/components/Modal';
+import SetNewGoal from './components/Modals/SetNewGoal';
 import './App.css'
-import TasksList from './components/TasksList';
+
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleAddGoal = (goal) => {
+    console.log('New Goal:', goal);
+  };
 
   return (
     <>
       <div className="text-4xl font-bold text-blue-600">
         Click on the Vite and React logos to learn more
       </div>
-      <TasksList/>
+ 
       <button onClick={() => setIsModalOpen(true)}>Открыть модальное окно</button>
 
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-        <h2>Модальное окно</h2>
-        <p>Это пример контента внутри модального окна.</p>
+        <SetNewGoal
+          onClose={() => setIsModalOpen(false)}
+          onSubmit={handleAddGoal}
+        />
       </Modal>
     </>
   )

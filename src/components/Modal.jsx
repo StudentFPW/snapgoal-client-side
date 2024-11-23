@@ -1,4 +1,5 @@
 import ReactDOM from 'react-dom';
+import close from '../assets/X.svg';
 import './Modal.scss';
 
 const Modal = ({ isOpen, onClose, children }) => {
@@ -9,7 +10,7 @@ const Modal = ({ isOpen, onClose, children }) => {
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
         <button className="modal-close" onClick={onClose}>
-          &times;
+          <img src={close}/>
         </button>
         {children}
       </div>
