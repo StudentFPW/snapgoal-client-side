@@ -1,4 +1,5 @@
 import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types';
 import close from '../assets/X.svg';
 import './Modal.scss';
 
@@ -17,6 +18,13 @@ const Modal = ({ isOpen, onClose, children }) => {
     </div>,
     document.getElementById('modal-root')
   );
+};
+
+
+Modal.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
+  children: PropTypes.node.isRequired, 
 };
 
 export default Modal;
