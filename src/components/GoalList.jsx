@@ -2,16 +2,16 @@ import React, { useEffect, useState } from 'react';
 import Goal from './Goal';
 import axios from 'axios';
 
-const TaskList = () => {
-  const [tasks, setTasks] = useState([]);
+const GoalList = () => {
+  const [goals, setGoals] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchTasks = async () => {
+    const fetchGoals = async () => {
       try {
         const response = await axios.get('https://api.example.com/goals'); // Заменить URL на API
-        setTasks(response.data);
+        setGoals(response.data);
         setLoading(false);
       } catch (err) {
         setError('Ошибка при загрузке целей');
@@ -19,7 +19,7 @@ const TaskList = () => {
       }
     };
 
-    fetchTasks();
+    fetchGoals();
   }, []);
 
   if (loading) return <p>Loading...</p>;
@@ -28,13 +28,13 @@ const TaskList = () => {
   return (
     <div className="p-4 bg-gray-100 min-h-screen">
       <h1 className="text-2xl font-bold mb-4">List of goals</h1>
-      {tasks.length > 0 ? (
-        tasks.map((task) => <Goal key={task.id} goal={task} />)
+      {goals.length > 0 ? (
+        goals.map((goal) => <Goal key={goal.id} goal={goal} />)
       ) : (
-        <p>There is no tasks now!</p>
+        <p>There is no goals now!</p>
       )}
     </div>
   );
 };
 
-export default TaskList;
+export default GoalList;

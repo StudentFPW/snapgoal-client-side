@@ -3,6 +3,7 @@ import AuthPage from '../pages/AuthPage';
 import UserPage from '../pages/UserPage';
 import AdminPage from '../pages/AdminPage';
 import ShopPage from '../pages/ShopPage';
+import App from '../App';
 import { useAuth } from '../core/AuthContext';
 
 const AppRoutes = () => {
@@ -28,7 +29,7 @@ const AppRoutes = () => {
         />
 
         {/* Redirect for /auth по */}
-        <Route path="*" element={<Navigate to="/auth" />} />
+        <Route path="*" element={<App />} />
       </Routes>
     </Router>
   );
