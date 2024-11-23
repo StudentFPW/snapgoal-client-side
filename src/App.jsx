@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Modal from '../src/components/Modal';
 import './App.css'
+import GoalsList from './components/GoalsList';
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -10,6 +11,7 @@ function App() {
       <div className="text-4xl font-bold text-blue-600">
         Click on the Vite and React logos to learn more
       </div>
+      <GoalsList/>
       <button onClick={() => setIsModalOpen(true)}>Открыть модальное окно</button>
 
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>

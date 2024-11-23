@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Goal from './Goal';
+import Goal from './GoalItem';
 import axios from 'axios';
 
 const TaskList = () => {
