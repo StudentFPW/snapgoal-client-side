@@ -1,15 +1,24 @@
 import { useState } from 'react';
 import Modal from '../src/components/Modal';
-import SetNewTask from './components/Modals/SetNewTask';
+import FinishTask from './components/Modals/FinishTask';
 import './App.css'
-import InputField from './components/InputField';
+
 
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleAddGoal = (goal) => {
-    console.log('New Goal:', goal);
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleFinishTask = (data) => {
+    console.log('Task data submitted:', data);
+    handleCloseModal();
   };
 
   return (
@@ -18,14 +27,18 @@ function App() {
         Click on the Vite and React logos to learn more
       </div>
  
-      <button onClick={() => setIsModalOpen(true)}>Открыть модальное окно</button>
-      <InputField/>
-      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-        <SetNewTask
-          onClose={() => setIsModalOpen(false)}
-          onSubmit={handleAddGoal}
-        />
-      </Modal>
+      <button
+        onClick={handleOpenModal}
+        className="btn-primary px-4 py-2"
+      >
+        Open Finish Task
+      </button>
+
+      {isModalOpen && (
+        <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
+          <FinishTask onSubmit={handleFinishTask} />
+        </Modal>
+      )}
     </>
   )
 }
