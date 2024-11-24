@@ -1,7 +1,8 @@
 // import { useAuth } from '../core/AuthContext';
 
 import TabBar from "../components/TabBar";
-import Goals from "../components/Goals";
+// import Goals from "../components/Goals";
+import TasksList from "../components/TasksList";
 
 const MainPage = () => {
 
@@ -33,7 +34,8 @@ const MainPage = () => {
         onLogoutClick={handleLogoutClick}
         showGoals={true}
       />
-      <Goals role="admin"/>
+      {/* <Goals role="admin"/> */}
+      <TasksList/>
     </div>
   );
 };

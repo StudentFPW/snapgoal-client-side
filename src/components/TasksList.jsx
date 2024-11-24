@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import axios from 'axios';
 import TaskItem from './TaskItem';
 
@@ -6,37 +7,43 @@ import TaskItem from './TaskItem';
 const mockTasks = [
   {
     id: 1,
-    title: 'Task title 1',
-    description: 'Description for task 1',
-    points: 10,
+    title: 'Improve CSS Skills',
+    description: 'Practice advanced CSS techniques, including Tailwind CSS.',
+    points: 15,
+    level: 'Intermediate',
+    priority: 'High',
+    deadline: '15/12/2024',
+    assignee: { name: 'John Doe' },
+    isCompleted: true,
   },
   {
     id: 2,
-    title: 'Task title 2',
-    description: 'Description for task 2',
+    title: 'Complete React Project',
+    description: 'Build a React project for the final submission.',
     points: 20,
+    level: 'Advanced',
+    priority: 'Critical',
+    deadline: '20/12/2024',
+    assignee: null,
   },
   {
-    id: 3,
-    title: 'Task title 3',
-    description: 'Description for task 3',
+    id: 1,
+    title: 'Improve CSS Skills',
+    description: 'Practice advanced CSS techniques, including Tailwind CSS.',
     points: 15,
+    level: 'Intermediate',
+    priority: 'High',
+    deadline: '15/12/2024',
+    assignee: { name: 'John Doe' },
+    isCompleted: false,
   },
 ];
 
-const buttons = [
-  { label: 'Approve', onClick: () => handleClick('approve'), variant: 'primary' },
-  { label: 'Reopen', onClick: () => handleClick('reopen'), variant: 'secondary' },
-];
-
-const handleClick = (action) => {
-  console.log(`Button clicked: ${action}`);
-};
-
-const TasksList = () => {
+const TasksList = ({ role }) => {
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const userRole = 'admin'; // Или 'admin'
 
   useEffect(() => {
     const fetchTasks = async () => {
@@ -46,7 +53,7 @@ const TasksList = () => {
         setLoading(false);
       } catch (err) {
         console.error(err);
-        setTasks(mockTasks); // Используем моковые данные при ошибке
+        setTasks(mockTasks);
         setError('Ошибка при загрузке задач. Отображаются тестовые данные.');
         setLoading(false);
       }
@@ -63,13 +70,17 @@ const TasksList = () => {
       <h1 className="text-2xl font-bold mb-4 text-content-primary">List of Tasks</h1>
       <div className="space-y-4">
         {tasks.length > 0 ? (
-          tasks.map((task) => <TaskItem key={task.id} task={task} joinButton/>)
+          tasks.map((task) => <TaskItem key={task.id} task={task} role={userRole} />)
         ) : (
           <p className="text-content-secondary">There are no tasks now!</p>
         )}
       </div>
     </div>
   );
+};
+
+TasksList.propTypes = {
+  role: PropTypes.oneOf(['user', 'admin']).isRequired,
 };
 
 export default TasksList;
