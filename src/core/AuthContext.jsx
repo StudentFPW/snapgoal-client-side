@@ -8,7 +8,7 @@ const AuthContext = createContext();
 // Провайдер контекста
 export const AuthProvider = ({ children }) => {
   // Задаем роль в состоянии (по умолчанию 'user')
-  const [role, setRole] = useState('user');
+  const [role, setRole] = useState('admin');
 
   // Функция для изменения роли
   const switchRole = (newRole) => {

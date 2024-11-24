@@ -1,23 +1,26 @@
 import CardContainer from './CardContainer';
 import PropTypes from 'prop-types';
 import { useAuth } from '../core/AuthContext';
+import image from '../assets/image.svg';
+import image1 from '../assets/image1.svg';
+import image2 from '../assets/image2.svg';
 
 const mockCards = [
   {
     id: 1,
-    image: 'https://via.placeholder.com/150',
+    image: image,
     title: 'Amazon eGift Card',
     coins: 10,
   },
   {
     id: 2,
-    image: 'https://via.placeholder.com/150',
+    image: image1,
     title: 'Google Play Gift Card',
     coins: 15,
   },
   {
     id: 3,
-    image: 'https://via.placeholder.com/150',
+    image: image2,
     title: 'Netflix Gift Card',
     coins: 20,
   },
