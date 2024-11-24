@@ -5,8 +5,10 @@ import deleteIcon from '../assets/Delete.svg';
 import timeIcon from '../assets/Clock.svg';
 import avatarUser from '../assets/avatar.svg';
 import proof from '../assets/proof.svg';
+import { useAuth } from '../core/AuthContext';
 
-const TaskItem = ({ task, role }) => {
+const TaskItem = ({ task }) => {
+  const { role } = useAuth();
   const [isExpanded, setIsExpanded] = useState(false);
   const [isTaskStarted, setIsTaskStarted] = useState(false);
   const [isTaskCompleted, setIsTaskCompleted] = useState(false);

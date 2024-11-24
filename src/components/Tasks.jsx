@@ -6,8 +6,10 @@ import NeedReviewTasks from './NeedReviewTasks';
 import CompletedTasks from './CompletedTasks';
 import Modal from './Modal';
 import SetNewTask from './Modals/SetNewTask';
+import { useAuth } from '../core/AuthContext';
 
-const Tasks = ({ role }) => {
+const Tasks = () => {
+  const { role } = useAuth();
   const [activeTab, setActiveTab] = useState('open');
   const [isModalOpen, setIsModalOpen] = useState(false);
 

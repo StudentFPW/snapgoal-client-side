@@ -1,11 +1,12 @@
 import React from 'react';
 import TabBar from '../components/TabBar';
 import Rewards from '../components/Rewards';
+import { useAuth } from '../core/AuthContext';
 
 const RewardsPage = () => {
+  const { role } = useAuth();
 
   const user = {
-    role: 'admin', // Или 'admin'
     coins: 10,
     name: 'Evan Jons',
     avatar: null,
@@ -32,7 +33,7 @@ const RewardsPage = () => {
         onLogoutClick={handleLogoutClick}
         showGoals={true}
       />
-      <Rewards role="admin"/>
+      <Rewards role={role}/>
     </div>
   );
 };

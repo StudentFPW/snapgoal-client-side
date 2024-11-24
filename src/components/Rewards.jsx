@@ -3,8 +3,11 @@ import PropTypes from 'prop-types';
 import CardsList from './CardsList';
 import Modal from './Modal';
 import AddRewardForm from './Modals/AddRewardForm';
+import { useAuth } from '../core/AuthContext';
 
-const Rewards = ({ role }) => {
+const Rewards = () => {
+  const { role } = useAuth();
+
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   // Моковые данные

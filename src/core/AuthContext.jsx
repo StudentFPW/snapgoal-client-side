@@ -1,35 +1,36 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useState, useContext } from 'react';
+import PropTypes from 'prop-types';
 
+
+// Создаем контекст
 const AuthContext = createContext();
 
+// Провайдер контекста
 export const AuthProvider = ({ children }) => {
+  // Задаем роль в состоянии (по умолчанию 'user')
+  const [role, setRole] = useState('user');
 
-  const [user, setUser] = useState(null);
-
-  const login = (userData) => {
-    setUser(userData);
-    localStorage.setItem('user', JSON.stringify(userData));
+  // Функция для изменения роли
+  const switchRole = (newRole) => {
+    setRole(newRole);
   };
-
-  const logout = () => {
-    setUser(null);
-    localStorage.removeItem('user');
-  };
-
-  React.useEffect(() => {
-    const storedUser = localStorage.getItem('user');
-    if (storedUser) {
-      setUser(JSON.parse(storedUser));
-    }
-  }, []);
 
   return (
-    <AuthContext.Provider value={{ user, login, logout }}>
+    <AuthContext.Provider value={{ role, switchRole }}>
       {children}
     </AuthContext.Provider>
   );
 };
 
+// Хук для использования контекста
 export const useAuth = () => {
-  return useContext(AuthContext);
+  const context = useContext(AuthContext);
+  if (!context) {
+    throw new Error('useAuth must be used within an AuthProvider');
+  }
+  return context;
+};
+
+AuthProvider.propTypes = {
+  children: PropTypes.node.isRequired,
 };

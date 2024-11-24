@@ -1,7 +1,10 @@
 import PropTypes from 'prop-types';
+import { useAuth } from '../core/AuthContext';
 import coin from '../assets/coin.svg';
 
-const CardContainer = ({ image, title, coins, role }) => {
+const CardContainer = ({ image, title, coins }) => {
+  const { role } = useAuth();
+
   return (
     <div className="p-5 border rounded-[20px] shadow-md bg-white">
       <img src={image} alt={title} className="w-full h-32 object-cover rounded-lg mb-4" />

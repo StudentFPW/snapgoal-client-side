@@ -2,8 +2,10 @@ import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 import coinIcon from '../assets/coin.svg';
 import userAvatar from '../assets/avatar.svg';
+import { useAuth } from '../core/AuthContext';
 
 const UserMenu = ({ user, onSettingsClick, onLogoutClick }) => {
+  const { role } = useAuth();
   const navigate = useNavigate();
 
   const handleRewardsClick = () => {
@@ -12,7 +14,7 @@ const UserMenu = ({ user, onSettingsClick, onLogoutClick }) => {
 
   return (
     <div className="w-[250px] p-4">
-      {user.role === 'user' && (
+      {role === 'user' && (
         <>
           {/* Баланс и имя пользователя */}
           <div className="flex items-center gap-4 mb-4">
@@ -57,7 +59,7 @@ const UserMenu = ({ user, onSettingsClick, onLogoutClick }) => {
         </>
       )}
 
-      {user.role === 'admin' && (
+      {role === 'admin' && (
         <>
           {/* Имя пользователя */}
           <div className="flex items-center gap-4 mb-4">

@@ -1,5 +1,6 @@
 import CardContainer from './CardContainer';
 import PropTypes from 'prop-types';
+import { useAuth } from '../core/AuthContext';
 
 const mockCards = [
   {
@@ -22,7 +23,9 @@ const mockCards = [
   },
 ];
 
-const CardsList = ({ rewards, role }) => {
+const CardsList = ({ rewards }) => {
+  const { role } = useAuth();
+
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
       {mockCards.map((card) => (

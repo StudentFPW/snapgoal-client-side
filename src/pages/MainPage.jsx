@@ -1,10 +1,13 @@
 import React from 'react';
 import TabBar from '../components/TabBar';
 import Goals from '../components/Goals';
+import { useAuth } from '../core/AuthContext';
+
 
 const MainPage = () => {
+  const { role } = useAuth();
+
   const user = {
-    role: 'admin', // Или 'user'
     coins: 10,
     name: 'Evan Jons',
     avatar: null,
@@ -31,7 +34,7 @@ const MainPage = () => {
         onLogoutClick={handleLogoutClick}
         showGoals={true}
       />
-      <Goals role={user.role} />
+      <Goals role={role} />
     </div>
   );
 };

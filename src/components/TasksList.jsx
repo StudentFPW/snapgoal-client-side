@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import TaskItem from './TaskItem';
+import { useAuth } from '../core/AuthContext';
 
 // Моковые данные
 const mockTasks = [
@@ -39,11 +40,11 @@ const mockTasks = [
   },
 ];
 
-const TasksList = ({ role }) => {
+const TasksList = () => {
+  const { role } = useAuth();
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const userRole = 'admin'; // Или 'admin'
 
   useEffect(() => {
     const fetchTasks = async () => {
@@ -69,7 +70,7 @@ const TasksList = ({ role }) => {
     <div className="p-4 bg-background">
       <div className="space-y-4">
         {tasks.length > 0 ? (
-          tasks.map((task) => <TaskItem key={task.id} task={task} role={userRole} />)
+          tasks.map((task) => <TaskItem key={task.id} task={task} role={role} />)
         ) : (
           <p className="text-content-secondary">There are no tasks now!</p>
         )}

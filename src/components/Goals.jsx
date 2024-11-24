@@ -2,9 +2,14 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import GoalsList from './GoalsList';
 import Tasks from './Tasks';
+import Modal from './Modal';
+import SetNewGoal from './Modals/SetNewGoal';
+import { useAuth } from '../core/AuthContext';
 
-const Goals = ({ role }) => {
+const Goals = () => {
+  const { role } = useAuth();
   const [selectedGoal, setSelectedGoal] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const mockGoals = [
     { id: 1, title: 'Beach Clean-up', description: 'Clean beaches around Limassol', progress: 0, startDate: '01/05/2025', endDate: '30/05/2025', userCount: 5 },
@@ -20,6 +25,20 @@ const Goals = ({ role }) => {
     setSelectedGoal(null); // Вернуться к списку целей
   };
 
+  const handleAddGoalClick = () => {
+    setIsModalOpen(true); // Открыть модальное окно добавления цели
+  };
+
+  const handleModalClose = () => {
+    setIsModalOpen(false); // Закрыть модальное окно
+  };
+
+  const handleGoalSubmit = (newGoal) => {
+    console.log('New goal submitted:', newGoal);
+    setIsModalOpen(false);
+    // Логика добавления новой цели (обновление списка целей)
+  };
+
   return (
     <div className="m-2 p-6 bg-white rounded-[16px] shadow-lg">
       {selectedGoal ? (
@@ -28,10 +47,23 @@ const Goals = ({ role }) => {
         <>
           <div className="flex gap-[24px] items-center mb-6">
             <h1 className="text-2xl font-sans font-bold text-content-primary">Goals</h1>
+            {role === 'admin' && (
+              <button
+                className="btn-icon px-4 py-2"
+                onClick={handleAddGoalClick}
+              >
+                + Add Goal
+              </button>
+            )}
           </div>
           <GoalsList goals={mockGoals} onGoalClick={handleGoalClick} />
         </>
       )}
+
+      {/* Модальное окно для добавления цели */}
+      <Modal isOpen={isModalOpen} onClose={handleModalClose}>
+        <SetNewGoal onClose={handleModalClose} onSubmit={handleGoalSubmit} />
+      </Modal>
     </div>
   );
 };
