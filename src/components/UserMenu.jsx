@@ -102,7 +102,7 @@ const UserMenu = ({ user, onSettingsClick, onLogoutClick }) => {
 
 UserMenu.propTypes = {
   user: PropTypes.shape({
-    role: PropTypes.string.isRequired,
+    // role: PropTypes.string.isRequired,
     coins: PropTypes.number,
     name: PropTypes.string.isRequired,
     avatar: PropTypes.string,

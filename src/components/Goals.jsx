@@ -18,25 +18,24 @@ const Goals = () => {
   ];
 
   const handleGoalClick = (goal) => {
-    setSelectedGoal(goal); // Открыть компонент Tasks с выбранной целью
+    setSelectedGoal(goal); 
   };
 
   const handleBackToGoals = () => {
-    setSelectedGoal(null); // Вернуться к списку целей
+    setSelectedGoal(null); 
   };
 
   const handleAddGoalClick = () => {
-    setIsModalOpen(true); // Открыть модальное окно добавления цели
+    setIsModalOpen(true); 
   };
 
   const handleModalClose = () => {
-    setIsModalOpen(false); // Закрыть модальное окно
+    setIsModalOpen(false); 
   };
 
   const handleGoalSubmit = (newGoal) => {
     console.log('New goal submitted:', newGoal);
     setIsModalOpen(false);
-    // Логика добавления новой цели (обновление списка целей)
   };
 
   return (

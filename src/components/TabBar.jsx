@@ -79,7 +79,7 @@ const TabBar = ({
 
 TabBar.propTypes = {
   user: PropTypes.shape({
-    role: PropTypes.string.isRequired,
+    // role: PropTypes.string.isRequired,
     coins: PropTypes.number,
     name: PropTypes.string.isRequired,
     avatar: PropTypes.string,
@@ -89,7 +89,7 @@ TabBar.propTypes = {
   onLogoutClick: PropTypes.func.isRequired,
   showGoals: PropTypes.bool, 
   fetchGoals: PropTypes.func, 
-  onGoalClick: PropTypes.func.isRequired, 
+  // onGoalClick: PropTypes.func.isRequired, 
 };
 
 TabBar.defaultProps = {

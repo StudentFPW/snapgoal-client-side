@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const axiosInstance = axios.create({
-  baseURL: 'https://api.example.com', // Добавить URL API
+  baseURL: 'https://snapgoal.org/',
   timeout: 10000,
   headers: {
     'Content-Type': 'application/json',
