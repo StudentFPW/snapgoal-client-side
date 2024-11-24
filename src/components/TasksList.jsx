@@ -66,7 +66,7 @@ const TasksList = ({ role }) => {
   if (error) console.warn(error);
 
   return (
-    <div className="p-4 bg-background min-h-screen">
+    <div className="p-4 bg-background">
       <div className="space-y-4">
         {tasks.length > 0 ? (
           tasks.map((task) => <TaskItem key={task.id} task={task} role={userRole} />)

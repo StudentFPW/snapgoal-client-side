@@ -1,18 +1,15 @@
-// import { useAuth } from '../core/AuthContext';
-
-import TabBar from "../components/TabBar";
-import Tasks from "../components/Tasks";
-import Goals from "../components/Goals";
+import React from 'react';
+import TabBar from '../components/TabBar';
+import Goals from '../components/Goals';
 
 const MainPage = () => {
-
   const user = {
-    role: 'admin', // Или 'admin'
+    role: 'admin', // Или 'user'
     coins: 10,
     name: 'Evan Jons',
     avatar: null,
   };
-  
+
   const handleRewardsClick = () => {
     console.log('Navigating to Rewards');
   };
@@ -27,15 +24,14 @@ const MainPage = () => {
 
   return (
     <div className="flex bg-background-background h-full">
-      <TabBar         
+      <TabBar
         user={user}
         onRewardsClick={handleRewardsClick}
         onSettingsClick={handleSettingsClick}
         onLogoutClick={handleLogoutClick}
         showGoals={true}
       />
-      {/* <Tasks role="admin"/> */}
-      <Goals role="admin"/>
+      <Goals role={user.role} />
     </div>
   );
 };

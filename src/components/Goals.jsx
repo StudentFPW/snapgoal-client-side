@@ -1,32 +1,10 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import OpenGoals from './OpenGoals';
-import CompletedGoals from './ComplitedGoals';
-import Modal from './Modal';
-import SetNewGoal from './Modals/SetNewGoal';
+import GoalsList from './GoalsList';
+import Tasks from './Tasks';
 
 const Goals = ({ role }) => {
-  const [activeTab, setActiveTab] = useState('open');
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedGoal, setSelectedGoal] = useState(null);
-
-  const handleTabClick = (tab) => {
-    setActiveTab(tab);
-  };
-
-  const handleAddGoalClick = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleModalClose = () => {
-    setIsModalOpen(false);
-  };
-
-  const handleGoalSubmit = (newGoal) => {
-    console.log('New goal submitted:', newGoal);
-    setIsModalOpen(false);
-  
-  };
 
   const mockGoals = [
     { id: 1, title: 'Beach Clean-up', description: 'Clean beaches around Limassol', progress: 0, startDate: '01/05/2025', endDate: '30/05/2025', userCount: 5 },
@@ -35,58 +13,25 @@ const Goals = ({ role }) => {
   ];
 
   const handleGoalClick = (goal) => {
-    setSelectedGoal(goal);
+    setSelectedGoal(goal); // Открыть компонент Tasks с выбранной целью
   };
 
   const handleBackToGoals = () => {
-    setSelectedGoal(null);
+    setSelectedGoal(null); // Вернуться к списку целей
   };
-  
+
   return (
     <div className="m-2 p-6 bg-white rounded-[16px] shadow-lg">
-      {/* Заголовок и кнопка */}
-      <div className="flex gap-[24px] items-center mb-6">
-        <h1 className="text-2xl font-sans font-bold text-content-primary">Goals</h1>
-        {role === 'admin' && (
-          <button
-            className="btn-icon px-4 py-2"
-            onClick={handleAddGoalClick}
-          >
-            + Add goal
-          </button>
-        )}
-      </div>
-
-      {/* Вкладки */}
-      <div className="flex gap-4 border-b border-border-layer_1 mb-6">
-        <button
-          className={`text-basic-16-medium ${
-            activeTab === 'open' ? 'text-cta-primary border-b-2 border-cta-primary' : 'text-content-secondary'
-          } pb-2`}
-          onClick={() => handleTabClick('open')}
-        >
-          Open
-        </button>
-        <button
-          className={`text-basic-16-medium ${
-            activeTab === 'completed' ? 'text-cta-primary border-b-2 border-cta-primary' : 'text-content-secondary'
-          } pb-2`}
-          onClick={() => handleTabClick('completed')}
-        >
-          Completed
-        </button>
-      </div>
-
-      {/* Контент вкладок */}
-      <div>
-        {activeTab === 'open' && <OpenGoals />}
-        {activeTab === 'completed' && <CompletedGoals />}
-      </div>
-
-      {/* Модальное окно для добавления цели */}
-      <Modal isOpen={isModalOpen} onClose={handleModalClose}>
-        <SetNewGoal onClose={handleModalClose} onSubmit={handleGoalSubmit} />
-      </Modal>
+      {selectedGoal ? (
+        <Tasks goal={selectedGoal} onBack={handleBackToGoals} role={role} />
+      ) : (
+        <>
+          <div className="flex gap-[24px] items-center mb-6">
+            <h1 className="text-2xl font-sans font-bold text-content-primary">Goals</h1>
+          </div>
+          <GoalsList goals={mockGoals} onGoalClick={handleGoalClick} />
+        </>
+      )}
     </div>
   );
 };
