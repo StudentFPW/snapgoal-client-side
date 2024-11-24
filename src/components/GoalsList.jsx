@@ -4,10 +4,11 @@ import GoalItem from './GoalItem';
 
 const GoalsList = ({ goals, onGoalClick }) => {
   return (
-    <div className="p-4  grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div className="p-4 grid grid-cols-1 md:grid-cols-2 gap-4">
       {goals.length > 0 ? (
         goals.map((goal) => (
-          <GoalItem key={goal.id} goal={goal} onClick={onGoalClick} />
+          // Передаем обработчик клика через пропс onClick
+          <GoalItem key={goal.id} goal={goal} onClick={() => onGoalClick(goal.id)} />
         ))
       ) : (
         <p className="text-gray-500">There are no goals at the moment!</p>
@@ -28,7 +29,7 @@ GoalsList.propTypes = {
       userCount: PropTypes.number.isRequired,
     })
   ).isRequired,
-  onGoalClick: PropTypes.func.isRequired,
+  onGoalClick: PropTypes.func.isRequired, // Обработчик клика обязателен
 };
 
 export default GoalsList;
