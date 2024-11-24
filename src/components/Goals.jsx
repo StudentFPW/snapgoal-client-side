@@ -8,6 +8,7 @@ import SetNewGoal from './Modals/SetNewGoal';
 const Goals = ({ role }) => {
   const [activeTab, setActiveTab] = useState('open');
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedGoal, setSelectedGoal] = useState(null);
 
   const handleTabClick = (tab) => {
     setActiveTab(tab);
@@ -27,6 +28,20 @@ const Goals = ({ role }) => {
   
   };
 
+  const mockGoals = [
+    { id: 1, title: 'Beach Clean-up', description: 'Clean beaches around Limassol', progress: 0, startDate: '01/05/2025', endDate: '30/05/2025', userCount: 5 },
+    { id: 2, title: 'Olive Harvest', description: 'Help with olive harvest', progress: 50, startDate: '01/06/2025', endDate: '30/06/2025', userCount: 3 },
+    { id: 3, title: 'Wildlife Protection', description: 'Support local wildlife', progress: 80, startDate: '01/07/2025', endDate: '30/07/2025', userCount: 8 },
+  ];
+
+  const handleGoalClick = (goal) => {
+    setSelectedGoal(goal);
+  };
+
+  const handleBackToGoals = () => {
+    setSelectedGoal(null);
+  };
+  
   return (
     <div className="m-2 p-6 bg-white rounded-[16px] shadow-lg">
       {/* Заголовок и кнопка */}

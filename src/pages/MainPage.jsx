@@ -2,7 +2,7 @@
 
 import TabBar from "../components/TabBar";
 import Tasks from "../components/Tasks";
-// import Goals from "../components/Goals";
+import Goals from "../components/Goals";
 
 const MainPage = () => {
 
@@ -34,7 +34,8 @@ const MainPage = () => {
         onLogoutClick={handleLogoutClick}
         showGoals={true}
       />
-      <Tasks role="admin"/>
+      {/* <Tasks role="admin"/> */}
+      <Goals role="admin"/>
     </div>
   );
 };

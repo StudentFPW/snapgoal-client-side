@@ -42,7 +42,7 @@ const mockGoals = [
   },
 ];
 
-const GoalsList = () => {
+const GoalsList = ( onGoalClick ) => {
   const [goals, setGoals] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -72,7 +72,7 @@ const GoalsList = () => {
       {goals.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {goals.map((goal) => (
-            <GoalItem key={goal.id} goal={goal} />
+            <GoalItem key={goal.id} goal={goal} onClick={onGoalClick} />
           ))}
         </div>
       ) : (
