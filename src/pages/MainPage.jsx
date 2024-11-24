@@ -7,7 +7,7 @@ import Tasks from "../components/Tasks";
 const MainPage = () => {
 
   const user = {
-    role: 'user', // Или 'admin'
+    role: 'admin', // Или 'admin'
     coins: 10,
     name: 'Evan Jons',
     avatar: null,
@@ -34,7 +34,7 @@ const MainPage = () => {
         onLogoutClick={handleLogoutClick}
         showGoals={true}
       />
-      <Tasks role="user"/>
+      <Tasks role="admin"/>
     </div>
   );
 };

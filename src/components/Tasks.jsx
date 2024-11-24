@@ -4,9 +4,12 @@ import OpenTasks from './OpenTasks';
 import InProgressTasks from './InProgressTasks';
 import NeedReviewTasks from './NeedReviewTasks';
 import CompletedTasks from './CompletedTasks';
+import Modal from './Modal';
+import SetNewTask from './Modals/SetNewTask';
 
 const Tasks = ({ role }) => {
   const [activeTab, setActiveTab] = useState('open');
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   // Моковые данные
   const mockTasks = {
@@ -29,11 +32,34 @@ const Tasks = ({ role }) => {
     setActiveTab(tab);
   };
 
+  const handleAddGoalClick = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleModalClose = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleGoalSubmit = (newGoal) => {
+    console.log('New goal submitted:', newGoal);
+    setIsModalOpen(false);
+  
+  };
+
   return (
     <div className="m-2 p-6 bg-white rounded-[16px] shadow-lg">
       {/* Заголовок */}
-      <h1 className="text-2xl font-sans font-bold text-content-primary mb-6">Tasks</h1>
-
+      <div className="flex gap-[24px] items-center mb-6">
+        <h1 className="text-2xl font-sans font-bold text-content-primary">Tasks</h1>
+        {role === 'admin' && (
+          <button
+            className="btn-icon px-4 py-2"
+            onClick={handleAddGoalClick}
+          >
+            + Add task
+          </button>
+        )}
+      </div>
       {/* Вкладки */}
       <div className="flex gap-4 border-b border-border-layer_1 mb-6">
         <button
@@ -77,6 +103,10 @@ const Tasks = ({ role }) => {
         {activeTab === 'needReview' && <NeedReviewTasks tasks={mockTasks.needReview} role={role} />}
         {activeTab === 'completed' && <CompletedTasks tasks={mockTasks.completed} role={role} />}
       </div>
+      {/* Модальное окно для добавления цели */}
+      <Modal isOpen={isModalOpen} onClose={handleModalClose}>
+        <SetNewTask onClose={handleModalClose} onSubmit={handleGoalSubmit} />
+      </Modal>
     </div>
   );
 };

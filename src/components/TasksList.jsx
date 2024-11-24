@@ -43,7 +43,7 @@ const TasksList = ({ role }) => {
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const userRole = 'user'; // Или 'admin'
+  const userRole = 'admin'; // Или 'admin'
 
   useEffect(() => {
     const fetchTasks = async () => {
