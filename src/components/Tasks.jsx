@@ -16,19 +16,23 @@ const Tasks = () => {
   // Моковые данные
   const mockTasks = {
     open: [
-      { id: 1, title: 'Beach Clean-up', description: 'Clean beaches around Limassol', points: 10, level: 'Easy', priority: 'Normal', deadline: '01/05/2025' },
-      { id: 2, title: 'Olive Harvest', description: 'Help with olive harvest in local farms', points: 20, level: 'Medium', priority: 'Major', deadline: '15/06/2025' },
+      { id: 1, title: 'Beach Clean-up', description: 'Clean beaches around Limassol', points: 10, level: 'Easy', priority: 'Normal', deadline: '01/05/2025', isCompleted: false, assignee: { name: 'John Doe' } },
+      { id: 2, title: 'Olive Harvest', description: 'Help with olive harvest in local farms', points: 20, level: 'Medium', priority: 'Major', deadline: '15/06/2025', isCompleted: false, assignee: null },
     ],
     inProgress: [
-      { id: 3, title: 'Tree Planting', description: 'Plant 50 trees in the park.', points: 15, level: 'Easy', priority: 'Normal', deadline: '20/05/2025' },
+      { id: 3, title: 'Tree Planting', description: 'Plant 50 trees in the park.', points: 15, level: 'Easy', priority: 'Normal', deadline: '20/05/2025', isCompleted: false, assignee: { name: 'Jane Doe' } },
+      { id: 4, title: 'Public Speaking Workshop', description: 'Prepare for the community speaking session.', points: 25, level: 'Medium', priority: 'High', deadline: '01/07/2025', isCompleted: false, assignee: { name: 'John Doe' } },
     ],
     needReview: [
-      { id: 4, title: 'Wildlife Protection Report', description: 'Prepare a report on wildlife protection.', points: 25, level: 'Challenging', priority: 'Critical', deadline: '10/06/2025' },
+      { id: 5, title: 'Wildlife Protection Report', description: 'Prepare a report on wildlife protection.', points: 25, level: 'Challenging', priority: 'Critical', deadline: '10/06/2025', isCompleted: false, assignee: { name: 'Alice Smith' } },
+      { id: 6, title: 'Organize Charity Event', description: 'Coordinate event logistics and setup.', points: 30, level: 'High', priority: 'Major', deadline: '30/06/2025', isCompleted: false, assignee: { name: 'Tom Hardy' } },
     ],
     completed: [
-      { id: 5, title: 'Community Workshop', description: 'Organized a workshop for community members.', points: 30, level: 'Medium', priority: 'Normal', deadline: '01/04/2025' },
+      { id: 7, title: 'Community Workshop', description: 'Organized a workshop for community members.', points: 30, level: 'Medium', priority: 'Normal', deadline: '01/04/2025', isCompleted: true, assignee: { name: 'Jane Doe' } },
+      { id: 8, title: 'Digital Marketing Campaign', description: 'Ran a successful online campaign.', points: 50, level: 'High', priority: 'Critical', deadline: '20/03/2025', isCompleted: true, assignee: { name: 'Mark Lee' } },
     ],
   };
+  
 
   // Обработчик смены вкладок
   const handleTabClick = (tab) => {
