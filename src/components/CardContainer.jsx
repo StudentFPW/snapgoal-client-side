@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import coin from '../assets/coin.svg';
 
-const CardContainer = ({ image, title, coins }) => {
+const CardContainer = ({ image, title, coins, role }) => {
   return (
     <div className="p-5 border rounded-[20px] shadow-md bg-white">
       <img src={image} alt={title} className="w-full h-32 object-cover rounded-lg mb-4" />
@@ -13,7 +13,10 @@ const CardContainer = ({ image, title, coins }) => {
           <span className="text-basic-16-medium">{coins}</span>
         </div>
 
-        <button className="btn-secondary">Redeem</button>
+        {/* Кнопка отображается только для пользователей */}
+        {role === 'user' && (
+          <button className="btn-secondary">Redeem</button>
+        )}
       </div>
     </div>
   );
@@ -23,6 +26,7 @@ CardContainer.propTypes = {
   image: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   coins: PropTypes.number.isRequired,
+  role: PropTypes.oneOf(['admin', 'user']).isRequired,
 };
 
 export default CardContainer;

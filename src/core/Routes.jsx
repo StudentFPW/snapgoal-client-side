@@ -1,8 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import AuthPage from '../pages/AuthPage';
 import MainPage from '../pages/MainPage';
-import ShopPage from '../pages/ShopPage';
-import App from '../App';
+import RewardsPage from '../pages/RewardsPage';
+// import App from '../App';
 // import { useAuth } from '../core/AuthContext';
 
 const AppRoutes = () => {
@@ -13,7 +13,7 @@ const AppRoutes = () => {
       <Routes>
         {/* Public routes */}
         <Route path="/auth" element={<AuthPage />} />
-        <Route path="/shop" element={<ShopPage />} />
+        <Route path="/rewards" element={<RewardsPage />} />
 
         <Route
           path="/main"
@@ -21,7 +21,7 @@ const AppRoutes = () => {
         />
 
         {/* Redirect for /auth по */}
-        <Route path="*" element={<App />} />
+        <Route path="*" element={<MainPage />} />
       </Routes>
     </Router>
   );

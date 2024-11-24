@@ -1,4 +1,5 @@
 import CardContainer from './CardContainer';
+import PropTypes from 'prop-types';
 
 const mockCards = [
   {
@@ -21,7 +22,7 @@ const mockCards = [
   },
 ];
 
-const CardsList = () => {
+const CardsList = ({ rewards, role }) => {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
       {mockCards.map((card) => (
@@ -30,10 +31,23 @@ const CardsList = () => {
           image={card.image}
           title={card.title}
           coins={card.coins}
+          role={role}
         />
       ))}
     </div>
   );
+};
+
+CardsList.propTypes = {
+  rewards: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      image: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+      points: PropTypes.number.isRequired,
+    })
+  ).isRequired,
+  role: PropTypes.oneOf(['admin', 'user']).isRequired,
 };
 
 export default CardsList;
