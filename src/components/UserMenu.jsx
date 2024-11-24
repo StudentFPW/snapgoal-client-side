@@ -1,8 +1,15 @@
 import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router-dom';
 import coinIcon from '../assets/coin.svg';
 import userAvatar from '../assets/avatar.svg';
 
-const UserMenu = ({ user, onRewardsClick, onSettingsClick, onLogoutClick }) => {
+const UserMenu = ({ user, onSettingsClick, onLogoutClick }) => {
+  const navigate = useNavigate();
+
+  const handleRewardsClick = () => {
+    navigate('/rewards');
+  };
+
   return (
     <div className="w-[250px] p-4">
       {user.role === 'user' && (
@@ -29,7 +36,7 @@ const UserMenu = ({ user, onRewardsClick, onSettingsClick, onLogoutClick }) => {
           {/* Ссылки */}
           <div className="flex flex-col gap-2">
             <button
-              onClick={onRewardsClick}
+              onClick={handleRewardsClick}
               className="text-small-14-medium font-sans text-cta-primary text-left hover:underline"
             >
               My rewards
@@ -67,6 +74,12 @@ const UserMenu = ({ user, onRewardsClick, onSettingsClick, onLogoutClick }) => {
           {/* Ссылки */}
           <div className="flex flex-col gap-2">
             <button
+              onClick={handleRewardsClick}
+              className="text-small-14-medium font-sans text-cta-primary text-left hover:underline"
+            >
+              My rewards
+            </button>
+            <button
               onClick={onSettingsClick}
               className="text-small-14-medium font-sans text-cta-primary text-left hover:underline"
             >
@@ -92,7 +105,6 @@ UserMenu.propTypes = {
     name: PropTypes.string.isRequired,
     avatar: PropTypes.string,
   }).isRequired,
-  onRewardsClick: PropTypes.func,
   onSettingsClick: PropTypes.func.isRequired,
   onLogoutClick: PropTypes.func.isRequired,
 };

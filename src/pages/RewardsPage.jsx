@@ -24,7 +24,7 @@ const RewardsPage = () => {
   };
 
   return (
-    <div className="flex bg-background-background">
+    <div className="flex bg-background-background h-full">
       <TabBar         
         user={user}
         onRewardsClick={handleRewardsClick}
