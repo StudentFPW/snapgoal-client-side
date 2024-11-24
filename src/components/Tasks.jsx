@@ -88,10 +88,10 @@ const Tasks = () => {
 
       {/* Контент вкладок */}
       <div>
-        {activeTab === 'open' && <OpenTasks tasks={mockTasks.open} role={role} />}
-        {activeTab === 'inProgress' && <InProgressTasks tasks={mockTasks.inProgress} role={role} />}
-        {activeTab === 'needReview' && <NeedReviewTasks tasks={mockTasks.needReview} role={role} />}
-        {activeTab === 'completed' && <CompletedTasks tasks={mockTasks.completed} role={role} />}
+        {activeTab === 'open' && <OpenTasks tasks={mockTasks.open} />}
+        {activeTab === 'inProgress' && <InProgressTasks tasks={mockTasks.inProgress} />}
+        {activeTab === 'needReview' && <NeedReviewTasks tasks={mockTasks.needReview} />}
+        {activeTab === 'completed' && <CompletedTasks tasks={mockTasks.completed} />}
       </div>
 
       {/* Модальное окно для добавления задачи */}

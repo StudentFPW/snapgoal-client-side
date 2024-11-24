@@ -9,3 +9,4 @@ const OpenTasks = ({ tasks }) => {
 };
 
 export default OpenTasks;
+
