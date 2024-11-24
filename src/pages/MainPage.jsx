@@ -1,13 +1,13 @@
 // import { useAuth } from '../core/AuthContext';
 
 import TabBar from "../components/TabBar";
+import Tasks from "../components/Tasks";
 // import Goals from "../components/Goals";
-import TasksList from "../components/TasksList";
 
 const MainPage = () => {
 
   const user = {
-    role: 'admin', // Или 'admin'
+    role: 'user', // Или 'admin'
     coins: 10,
     name: 'Evan Jons',
     avatar: null,
@@ -34,8 +34,7 @@ const MainPage = () => {
         onLogoutClick={handleLogoutClick}
         showGoals={true}
       />
-      {/* <Goals role="admin"/> */}
-      <TasksList/>
+      <Tasks role="user"/>
     </div>
   );
 };

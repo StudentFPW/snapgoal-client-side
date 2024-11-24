@@ -43,7 +43,7 @@ const TasksList = ({ role }) => {
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const userRole = 'admin'; // Или 'admin'
+  const userRole = 'user'; // Или 'admin'
 
   useEffect(() => {
     const fetchTasks = async () => {
@@ -67,7 +67,6 @@ const TasksList = ({ role }) => {
 
   return (
     <div className="p-4 bg-background min-h-screen">
-      <h1 className="text-2xl font-bold mb-4 text-content-primary">List of Tasks</h1>
       <div className="space-y-4">
         {tasks.length > 0 ? (
           tasks.map((task) => <TaskItem key={task.id} task={task} role={userRole} />)
