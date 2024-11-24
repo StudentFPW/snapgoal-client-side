@@ -13,15 +13,21 @@ const TabBar = ({
 }) => {
   const [goals, setGoals] = useState([]);
 
+  const mockGoals = [
+    { id: 1, title: 'Beach Clean-up' },
+    { id: 2, title: 'Olive Harvest' },
+    { id: 3, title: 'Cyprus Wildlife Protection' },
+  ];
+
   useEffect(() => {
     if (showGoals) {
       const loadGoals = async () => {
         try {
           const data = await fetchGoals();
-          setGoals(data);
+          setGoals(data.length ? data : mockGoals); // Использовать моковые данные, если fetchGoals возвращает пустой массив
         } catch (error) {
           console.error('Ошибка загрузки целей:', error);
-          setGoals([]);
+          setGoals(mockGoals); // Использовать моковые данные в случае ошибки
         }
       };
       loadGoals();
@@ -79,7 +85,6 @@ const TabBar = ({
 
 TabBar.propTypes = {
   user: PropTypes.shape({
-    // role: PropTypes.string.isRequired,
     coins: PropTypes.number,
     name: PropTypes.string.isRequired,
     avatar: PropTypes.string,
@@ -87,14 +92,14 @@ TabBar.propTypes = {
   onRewardsClick: PropTypes.func,
   onSettingsClick: PropTypes.func.isRequired,
   onLogoutClick: PropTypes.func.isRequired,
-  showGoals: PropTypes.bool, 
-  fetchGoals: PropTypes.func, 
-  // onGoalClick: PropTypes.func.isRequired, 
+  showGoals: PropTypes.bool,
+  fetchGoals: PropTypes.func,
+  onGoalClick: PropTypes.func.isRequired,
 };
 
 TabBar.defaultProps = {
-  showGoals: false, 
-  fetchGoals: async () => [], 
+  showGoals: false,
+  fetchGoals: async () => [],
 };
 
 export default TabBar;
